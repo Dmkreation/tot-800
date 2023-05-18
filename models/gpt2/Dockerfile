@@ -11,10 +11,10 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
     -p https://github.com/zsh-users/zsh-autosuggestions \
     -p https://github.com/zsh-users/zsh-completions
 
-WORKDIR /home/data-extractor-pdf
+WORKDIR /home/gpt2
 
 COPY requirements.txt requirements.txt 
 
 RUN pip install -r requirements.txt --upgrade pip
 
-ENTRYPOINT [ "/home/data-extractor-pdf/entrypoint.sh" ]
+ENTRYPOINT [ "/home/gpt2/entrypoint.sh" ]

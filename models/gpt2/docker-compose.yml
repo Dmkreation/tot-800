@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  model-gpt2:
+    container_name: model-gpt2
+    image: model-gpt2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/home/gpt2
