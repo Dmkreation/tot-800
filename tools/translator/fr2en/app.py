@@ -11,22 +11,27 @@ def format_text(text):
     return re.sub('[^a-zA-Z ]+', '', text)
 
 
-def translate_text_file(txt_path, output_file):
+def translate_text_file(txt_path, output_path):
+    print(f"Start translation of {txt_path}")
     txt_file = open(txt_path, 'rb')
     text = txt_file.read()
     txt_file.close()
 
-    # Décodez le contenu en utilisant l'encodage approprié
     text = text.decode("utf-8")
-
-    formated_text = tuple(map(format_text, text.split()))
-    input_ids = tokenizer.encode(formated_text, return_tensors="pt")
-    translated = model.generate(input_ids)
-    output_text = tokenizer.decode(translated[0], skip_special_tokens=True)
-
-    output_file = open(output_file, "w")
-    output_file.write(output_text)
-    output_file.close()
+    max_length = 512
+    text_segments = [text[i:i+max_length]
+                     for i in range(0, len(text), max_length)]
+    total_segment = len(text_segments)
+    count = 1
+    with open(output_path, "w+") as output_file:
+        for segment in text_segments:
+            print(f"{count}/{total_segment} Segment(s)")
+            input_ids = tokenizer.encode(segment, return_tensors="pt")
+            translated = model.generate(input_ids)
+            decoded = tokenizer.decode(translated[0], skip_special_tokens=True)
+            output_file.write(f" {decoded}")
+            count += 1
+        output_file.close()
 
     print(
         f"Traduction terminée. Le texte a été sauvegardé dans {output_file}.")
