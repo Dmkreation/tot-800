@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  tot800:
+    container_name: tot800
+    image: tot800
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
