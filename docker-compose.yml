@@ -4,8 +4,11 @@ services:
   tot800:
     container_name: tot800
     image: tot800
+    entrypoint: /home/tot800/entrypoint.sh
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: ./Dockerfile
     volumes:
-      - .:/app
+      - .:/home/tot800

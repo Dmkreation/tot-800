@@ -24,5 +24,5 @@ if __name__ == '__main__':
         print("Veuillez spécifier le chemin vers le fichier PDF en argument.")
     else:
         pdf_path = sys.argv[1]
-        output_file = f"/app/exchange/{os.path.basename(pdf_path).replace('pdf', 'txt')}"
+        output_file = f"{os.environ['PDF_EXTRACTOR_PATH']}/exchange/{os.path.basename(pdf_path).replace('pdf', 'txt')}"
         extract_text_from_pdf(pdf_path, output_file)

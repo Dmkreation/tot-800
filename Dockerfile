@@ -12,9 +12,3 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
     -p https://github.com/zsh-users/zsh-completions
 
 WORKDIR /home/tot800
-
-COPY requirements.txt requirements.txt 
-
-RUN pip install -r requirements.txt --upgrade pip
-
-ENTRYPOINT [ "/home/tot800/entrypoint.sh" ]
