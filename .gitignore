@@ -1,2 +1,4 @@
-# data conversion results
-tools/data_extractor/pdf/results
+# data conversion exchange
+tools/data_extractor/pdf/exchange
+
+.DS_Store
