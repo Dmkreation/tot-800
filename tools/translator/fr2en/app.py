@@ -2,6 +2,8 @@ import sys
 import os
 import re
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+sys.path.insert(1, os.path.join(sys.path[0], '../../../internal'))
+from logger import logger
 
 tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-fr-en")
 model = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-fr-en")
@@ -12,20 +14,18 @@ def format_text(text):
 
 
 def translate_text_file(txt_path, output_path):
-    print(f"Start translation of {txt_path}")
-    txt_file = open(txt_path, 'rb')
-    text = txt_file.read()
-    txt_file.close()
+    logger.info(f"Start translation of {txt_path}")
+    with open(txt_path, 'r', encoding='utf-8') as file:
+        text = file.read()
 
-    text = text.decode("utf-8")
     max_length = 512
     text_segments = [text[i:i+max_length]
                      for i in range(0, len(text), max_length)]
     total_segment = len(text_segments)
     count = 1
-    with open(output_path, "w+") as output_file:
+    with open(output_path, "w+", encoding='utf-8') as output_file:
         for segment in text_segments:
-            print(f"{count}/{total_segment} Segment(s)")
+            logger.info(f"{count}/{total_segment} Segment(s)")
             input_ids = tokenizer.encode(segment, return_tensors="pt")
             translated = model.generate(input_ids)
             decoded = tokenizer.decode(translated[0], skip_special_tokens=True)
@@ -33,13 +33,14 @@ def translate_text_file(txt_path, output_path):
             count += 1
         output_file.close()
 
-    print(
+    logger.info(
         f"Traduction terminée. Le texte a été sauvegardé dans {output_file}.")
 
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print("Veuillez spécifier le chemin vers le fichier TXT en argument.")
+        logger.info(
+            "Veuillez spécifier le chemin vers le fichier TXT en argument.")
     else:
         txt_path = sys.argv[1]
         output_file = f"{os.environ['FR2EN_TRANSLATOR_PATH']}/exchange/{os.path.basename(txt_path).replace('.txt', '-en.txt')}"

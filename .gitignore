@@ -1,4 +1,7 @@
 # data conversion exchange
 exchange
+dataset
 
+# Cache
+pip_cache
 .DS_Store
