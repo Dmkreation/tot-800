@@ -3,5 +3,6 @@ exchange
 dataset
 
 # Cache
-pip_cache
+app_cache
+.pyc
 .DS_Store

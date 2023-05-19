@@ -17,4 +17,4 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - .:/home/tot800
-      - ./pip_cache:/root/.cache/pip
+      - ./app_cache:/root/.cache
