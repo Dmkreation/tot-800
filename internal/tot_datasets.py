@@ -4,11 +4,13 @@ from datasets import load_dataset
 available = [
     {
         "name": "nomic-ai/gpt4all-j-prompt-generations",
-        "versions": ["v1.2-jazzy", "v1.1-jazzy"]
+        "versions": ["v1.2-jazzy", "v1.1-jazzy"],
+        "revision": True
     },
     {
         "name": "wikitext",
-        "versions": ["wikitext-103-raw-v1", "wikitext-2-raw-v1", "wikitext-2-v1"]
+        "versions": ["wikitext-103-raw-v1", "wikitext-2-raw-v1", "wikitext-2-v1"],
+        "revision": False
     },
 ]
 
@@ -35,7 +37,11 @@ dsv_questions = [
 q_version = inquirer.prompt(dsv_questions)
 version = q_version["version"]
 
-dataset = load_dataset(dataset["name"], version)
+if dataset['revision']:
+    dataset = load_dataset(dataset["name"], revision=version)
+else:
+    dataset = load_dataset(dataset["name"], version)
+
 
 if isinstance(dataset, dict):
     print(dataset['train'][0].keys())

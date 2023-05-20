@@ -1,3 +1,4 @@
 termcolor
+jinja2
 inquirer
 datasets

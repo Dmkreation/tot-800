@@ -2,9 +2,9 @@ version: '3.4'
 
 services:
   tot800:
-    container_name: tot800
-    image: tot800
-    entrypoint: /home/tot800/entrypoint.sh
+    container_name: $APP_NAME
+    image: ${APP_NAME}-app
+    entrypoint: /home/$APP_NAME/app/entrypoint.sh
     env_file:
       - .env
     logging:
@@ -16,5 +16,5 @@ services:
       context: .
       dockerfile: ./Dockerfile
     volumes:
-      - .:/home/tot800
-      - ./app_cache:/root/.cache
+      - .:/home/$APP_NAME/app
+      - ./app_cache:/home/$APP_NAME/.cache

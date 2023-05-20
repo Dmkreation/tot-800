@@ -1,0 +1,28 @@
+#!/bin/bash
+
+option=$1
+
+case $option in
+    build)
+        docker build --build-arg APP_NAME={{ app_name }} . -t {{ app_name }}-app
+        ;;
+    start)
+        APP_NAME={{ app_name }} docker compose up -d
+        ;;
+    stop)
+        APP_NAME={{ app_name }} docker compose stop
+        ;;
+    restart)
+        APP_NAME={{ app_name }} docker compose restart
+        ;;
+    log)
+        APP_NAME={{ app_name }} docker compose logs -f
+        ;;
+    shell)
+        APP_NAME={{ app_name }} docker compose exec -it -e APP_NAME={{ app_name }} {{ app_name }} /bin/zsh
+        ;;
+    *)
+        echo "Unknow option: $option"
+        echo "Usage: $0 {build|start|stop|restart|log|shell}"
+        exit 1
+esac

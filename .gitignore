@@ -3,6 +3,7 @@ exchange
 dataset
 
 # Cache
+bin/app
 app_cache
 __pycache__
 .pyc

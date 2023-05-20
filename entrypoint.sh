@@ -8,6 +8,6 @@ pip install -r requirements.txt --upgrade pip
 
 while true
 do
-    echo "TOT-800 is started"
+    echo "${APP_NAME} is started"
     sleep 10
 done

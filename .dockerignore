@@ -1,5 +1,6 @@
+app_cache/
 Dockerfile
 docker-compose.yml
 .git
 .gitignore
-.vscode
+.vscode/
