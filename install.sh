@@ -9,5 +9,9 @@ cd $PDF_EXTRACTOR_PATH && pip install -r requirements.txt
 # Translators
 cd $FR2EN_TRANSLATOR_PATH && pip install -r requirements.txt
 
+# Models
+cd $GPT2_MODEL_PATH && pip install -r requirements.txt
+cd $GPT4ALL_MODEL_PATH && pip install -r requirements.txt
+
 # Internal tools
 cd $INTERNAL_PATH && pip install -r requirements.txt

@@ -3,8 +3,6 @@ import os
 from datetime import datetime
 from termcolor import colored
 
-print(colored('Ceci est du texte rouge', 'red'))
-
 
 class LogLevel(Enum):
     INFO = 4

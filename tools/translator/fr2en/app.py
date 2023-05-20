@@ -2,7 +2,6 @@ import sys
 import os
 import re
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-sys.path.insert(1, os.path.join(sys.path[0], '../../../internal'))
 from logger import logger
 
 tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-fr-en")
