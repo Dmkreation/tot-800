@@ -1,6 +1,7 @@
 # data conversion exchange
 exchange
-dataset
+models/gpt2/dataset/data.txt
+models/**/model/*
 
 # Cache
 bin/app
