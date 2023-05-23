@@ -1,5 +1,5 @@
 import sys
-# from models.gpt4all.app import query_gpt
+from models.gpt4all.app import query_gpt
 from internal.logger import logger
 from internal.parser.main import handlers
 
@@ -9,4 +9,4 @@ while True:
         sys.exit()
     elif handlers(user_input):
         logger.info("Handlers matching")
-    # query_gpt(user_input)
+    query_gpt(user_input)
