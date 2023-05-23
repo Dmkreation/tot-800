@@ -4,6 +4,9 @@ In a second step, the model will have to learn from its interaction with the use
 Finally, the application and the model will have to be able to run on systems with standard performances
 
 # Setup and Start
+## Requirements
+Application is full Dockerized with `python:3.11.3` image, only [Docker](https://docs.docker.com/engine/install/) and Compose are required
+
 ```shell
 export app_name=tot800 # Choose a name
 docker build --build-arg APP_NAME=$app_name . -t "${app_name}-app" # Build image
