@@ -1,3 +1,8 @@
+# What for?
+This is the first draft of an AI-based personal assistant, the goal is to build an application able to understand the user's request and to interact with the system and/or the web to answer the requested need. 
+In a second step, the model will have to learn from its interaction with the user, in order to correct its mistakes and to calibrate itself to the system and its user.
+Finally, the application and the model will have to be able to run on systems with standard performances
+
 # Setup and Start
 ```shell
 export app_name=tot800 # Choose a name
@@ -22,18 +27,21 @@ python app.py # Start interaction with assistant
 ```
 
 # Models
-|name|inference|trainer|
-|[GTP-2](models/gpt2)|✅|✅|
-|[GTP4ALL](models/gpt4all)|✅|❌|
+Name|Inference|Trainer
+----|---------|-------
+[GTP-2](models/gpt2) | ✅ | ✅
+[GTP4ALL](models/gpt4all) | ✅ | ❌
 
 # Tools
-|name|model|library|description|
-|[DataExtractor::Pdf](tools/data_extractor/pdf)||[PyPDF2](https://pypi.org/project/PyPDF2/)|extract text from .pdf files|
-|[Translator::Fr2En](tools/translator/fr2en)|[Helsinki-NLP/opus-mt-fr-en](https://huggingface.co/Helsinki-NLP/opus-mt-fr-en)||translate text from French to English|
+Name|Model|Library|Description
+----|-----|-------|-----------
+[DataExtractor::Pdf](tools/data_extractor/pdf) | | [PyPDF2](https://pypi.org/project/PyPDF2/) | extract text from .pdf files
+[Translator::Fr2En](tools/translator/fr2en) | [Helsinki-NLP/opus-mt-fr-en](https://huggingface.co/Helsinki-NLP/opus-mt-fr-en) | | translate text from French to English
 
 # Internal
-|name|description|
-|[cli Initializer](internal/initializer)|Create `bin/app` file at first start to easily interact with app like log, shell...|
-|[Logger](internal/logger.py)|Set in `$PYTHONPATH` to access everywhere|
-|[Parser](internal/parser)|Query parsers to handle actions|
-|[Parser::FileHandler](internal/parser/file_handler.py)|Detect file from path and/or url in query|
+Name|description
+----|-----------
+[cli Initializer](internal/initializer) | Create `bin/app` file at first start to easily interact with app like log, shell...
+[Logger](internal/logger.py) | Set in `$PYTHONPATH` to access everywhere
+[Parser](internal/parser) | Query parsers to handle actions
+[Parser::FileHandler](internal/parser/file_handler.py) | Detect file from path and/or url in query
